@@ -19,6 +19,9 @@ class App extends Component {
   }
 
   render() {
+    const { robots, searchField } = this.state; 
+    const filteredRobots = robots.filter(robot => robot.name.toLowerCase().includes(searchField.toLowerCase()));
+
     return (
       <div className="App">
         <input 
@@ -26,7 +29,7 @@ class App extends Component {
           placeholder='search robots'
           onChange={e => this.setState({ searchField: e.target.value})}
           />
-        <CardList robots ={this.state.robots}/>       
+        <CardList robots ={filteredRobots}/>       
       </div>
     );
   } 
